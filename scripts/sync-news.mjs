@@ -33,7 +33,7 @@ export function escapeHtml(value) {
 
 export function selectNews(discussions, limit = 5) {
 	return discussions
-		.filter((item) => ['news', 'announcements'].includes(item.category?.slug))
+		.filter((item) => item.category?.slug === 'news')
 		.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
 		.slice(0, limit);
 }

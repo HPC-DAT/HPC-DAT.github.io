@@ -11,12 +11,12 @@ const discussion = (overrides = {}) => ({
 	...overrides
 });
 
-test('selects both migration slugs, sorts newest first, and limits output', () => {
+test('selects news, sorts newest first, and limits output', () => {
 	const items = Array.from({ length: 7 }, (_, index) =>
 		discussion({
 			number: index,
 			createdAt: `2026-09-0${index + 1}T10:00:00Z`,
-			category: { slug: index === 0 ? 'general' : index === 1 ? 'announcements' : 'news' }
+			category: { slug: index < 2 ? 'general' : 'news' }
 		})
 	);
 	assert.deepEqual(selectNews(items).map((item) => item.number), [6, 5, 4, 3, 2]);
