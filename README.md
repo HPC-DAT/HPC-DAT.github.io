@@ -8,3 +8,9 @@ between the `news-sync` markers in this repository.
 
 The site has no runtime dependencies or build step. Open `index.html` locally to
 preview it.
+
+Node.js 24 is required to run the news synchronization script and its tests:
+
+```sh
+node --test scripts/sync-news.test.mjs
+```
